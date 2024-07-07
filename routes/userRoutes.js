@@ -11,7 +11,7 @@ router.post("/login", UserController.userLogin);
 router.post("/sendresetpasswordemail",UserController.sendUserPasswordResetEmail);
 
 // Route Level Middleware - To Protect Route
-router.post("/changepassword",checkUserAuth, UserController.changeUserPassword);
 router.get("/loggeduser", checkUserAuth, UserController.loggedUser);
+router.post("/changepassword",checkUserAuth, UserController.changeUserPassword);
 
 export default router;

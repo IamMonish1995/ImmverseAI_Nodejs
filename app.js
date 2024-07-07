@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import connectDB from "./config/connectdb.js";
 import userRoutes from "./routes/userRoutes.js";
+import todoRoutes from "./routes/todoRoutes.js";
 import swaggerUi from "swagger-ui-express";
 import { swaggeroptions } from "./swagger-dev-api.js";
 import bodyParser from "body-parser";
@@ -32,6 +33,7 @@ app.use(
 );
 
 app.use("/api/user", userRoutes);
+app.use("/api/todo", todoRoutes);
 
 app.use("/status", (req, res) => {
     res.send("working");
