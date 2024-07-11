@@ -32,19 +32,19 @@ class UserController {
               process.env.JWT_SECRET_KEY,
               { expiresIn: "5d" }
             );
-            // await transporter
-            //   .sendMail({
-            //     from: process.env.EMAIL_FROM,
-            //     to: email,
-            //     subject: emailTemplates.verification.subject,
-            //     html: emailTemplates.verification.body({
-            //       name,
-            //       link: `${req.protocol}://${req.host}/confirmemail?id=${saved_user._id}&token=${token}`,
-            //     }),
-            //   })
-            //   .then((emailStatus) => {
-            //     console.log("Email Sent Successfully");
-            //   });
+            await transporter
+              .sendMail({
+                from: process.env.EMAIL_FROM,
+                to: email,
+                subject: emailTemplates.verification.subject,
+                html: emailTemplates.verification.body({
+                  name,
+                  link: `${req.protocol}://${req.host}/confirmemail?id=${saved_user._id}&token=${token}`,
+                }),
+              })
+              .then((emailStatus) => {
+                console.log("Email Sent Successfully");
+              });
             res.status(201).send({
               status: "success",
               message: "Registration Success",
